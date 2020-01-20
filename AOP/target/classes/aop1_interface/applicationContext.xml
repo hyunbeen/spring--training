@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!--  대상 클래스 빈 생성 -->
+	<bean id='targetBean' class="aop1_interface.MessageBeanImpl"/>
+	<!-- 어드바이스 (공통로직) 빈 생성 -->
+	<bean id='LoggingAdvice' class="aop1_interface.LoggingAdvice"/>
+	<!-- 어드바이스 연결 -->
+	<bean id='advisor' class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="pointcut">
+			<bean class="org.springframework.aop.support.JdkRegexpMethodPointcut">
+				<property name="pattern">
+					<value>.*Hello.*</value>	
+				</property>
+			</bean>
+		</property> <!-- setPoint함수 호출 -->
+		
+		<property name="advice" ref='LoggingAdvice'></property> <!-- setAdvice함수 호출 -->
+		
+	</bean>
+	<!-- AOP적용(proxy 기반 필요 -->
+	<bean id='proxy' class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target" ref="targetBean"></property>
+		<property name="interceptorNames" value='advisor'></property>
+	</bean>
+</beans>

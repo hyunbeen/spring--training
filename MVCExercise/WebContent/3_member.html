@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+</head>
+<body>
+	<form action="member/insert3.do" method="post">
+		<table cellspacing="0" width="600">
+			<caption>
+				<h2>List type의 property</h2>
+			</caption>
+			<tr>
+				<th width="200">아이디</th>
+				<th width="200">이름</th>
+				<th width="100">나이</th>
+			</tr>
+			<tr>				
+				<td><input type="text" name="list[0].id" value='a001'></td>
+				<td><input type="text" name="list[0].name" value='홍길동'></td>
+				<td><input type="text" name="list[0].age" value="20"></td>
+			</tr>
+			<tr>				
+				<td><input type="text" name="list[1].id" value='b002'></td>
+				<td><input type="text" name="list[1].name" value='홍길자'></td>
+				<td><input type="text" name="list[1].age" value="30"></td>
+			</tr>
+
+			<tr>				
+				<td><input type="text" name="list[2].id" value='c003'></td>
+				<td><input type="text" name="list[2].name" value='홍길국'></td>
+				<td><input type="text" name="list[2].age" value="25"></td>
+			</tr>
+
+			<tr>
+				<td colspan="4" align="center"><input type="submit" value="전송"></td>
+
+			</tr>
+
+		</table>
+
+	</form>
+
+
+</body>
+</html>

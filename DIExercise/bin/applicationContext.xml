@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--  객체 : bean -->
+<bean id='messagebean' class="MessageBeanImpl" p:out-ref="outputer">
+<property name="name" value="홍길동"></property>
+<property name="message"><value>오늘도 행복 합시다</value></property>
+</bean>
+<bean id='outputer' class="OutputerImpl"/>
+</beans>
+<!--applicationContext.xml-->

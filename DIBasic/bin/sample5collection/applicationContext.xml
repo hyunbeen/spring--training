@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<bean id='bean' class="sample5collection.ListBean">
+	<property name="intList"><!-- setIntList() 호출 -->
+		<list>
+			<value>100</value>
+			<value>200</value>
+			<value>300</value>
+		</list>
+	</property>
+	<property name="memberList"><!-- setIntList() 호출 -->
+		<list>
+			<ref bean='m1'/>
+			<ref bean='m2'/>
+			<ref bean='m3'/>
+		</list>
+	</property>
+</bean>
+<!-- setter 호출 -->
+<bean id='m1' class="sample5collection.Member">
+	<property name="name" value="홍길동"></property>
+	<property name="age" value="22"></property>
+	<property name="message"><value>오늘도 행복 합시다</value></property>
+</bean>
+<!-- 생성자 값 지정-->
+<bean id='m2' class="sample5collection.Member">
+	<constructor-arg value="홍길자"></constructor-arg>
+	<constructor-arg value="33"></constructor-arg>
+	<constructor-arg ><value>우리조 파이팅</value></constructor-arg>
+</bean>
+<bean id='m3' class='sample5collection.Member' p:name='홍길숙' p:age='25' p:message="퍼득밥먹자">
+<!-- property : setter 호출 constructor-arg : 생성자호출 -->
+</bean>
+</beans>

@@ -1,0 +1,12 @@
+
+-- board table
+create table tbl_board (	
+bno		number(5), 
+title		varchar2(100), 
+content	varchar2(400), 
+writer	varchar2(20), 
+regdate	date, 
+viewcnt	number(5)
+);
+
+create sequence sql_tbl_board;

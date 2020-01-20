@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!-- setter 호출 -->
+<bean id='m' class="sample2value.Member" scope='singleton'>
+	<property name="name" value="홍길동"></property>
+	<property name="age" value="22"></property>
+	<property name="message"><value>오늘도 행복 합시다</value></property>
+</bean>
+<!-- 생성자 값 지정-->
+<bean id='m2' class="sample2value.Member">
+	<constructor-arg value="홍길자"></constructor-arg>
+	<constructor-arg value="33"></constructor-arg>
+	<constructor-arg ><value>우리조 파이팅</value></constructor-arg>
+</bean>
+<bean id='dao1' class='sample2value.MemberDao'>
+	<property name='member' ref='m'></property>
+</bean>
+<bean id='dao2' class='sample2value.MemberDao'>
+	<constructor-arg ref='m2'></constructor-arg>
+</bean>
+</beans>
+<!-- beans.xml -->

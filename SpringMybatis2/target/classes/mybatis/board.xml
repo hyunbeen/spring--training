@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="makeMap">
+<!-- 1. 모든 게시물 목록 보기 -->
+<select id="boardList" resultType="myproj.board.dto.BoardVO">
+ SELECT * FROM uploadtemp ORDER BY b_id DESC
+</select>
+<select id="boardView" resultType="myproj.board.dto.BoardVO" parameterType="myproj.board.dto.BoardVO">
+ SELECT * FROM uploadtemp WHERE b_id = #{b_id}
+</select>
+<update id="boardFind" parameterType="myproj.board.dto.BoardVO">
+ UPDATE uploadtemp SET b_count = b_count+1 WHERE b_id = #{b_id}
+</update>
+<update id="boardUpdate" parameterType="myproj.board.dto.BoardVO">
+ UPDATE uploadtemp SET b_email=#{b_email},b_name=#{b_name},b_title=#{b_title},b_content=#{b_content},b_pwd=#{b_pwd}
+ <if test="b_fname != null">
+,b_fname=#{b_fname},b_fsize=#{b_fsize}
+</if>
+ <if test="b_fname == null">
+,b_fname=null,b_fsize=null
+</if> 
+WHERE b_id = #{b_id}
+</update>
+<select id="boardSearch" resultType="myproj.board.dto.BoardVO" parameterType="hashmap">
+ SELECT * FROM uploadtemp WHERE ${searchname} like '%${searchtext}%'
+</select>
+<!-- 2. 게시물 입력하기 -->
+<insert id="boardInsert" parameterType="myproj.board.dto.BoardVO">
+INSERT INTO uploadtemp 
+( b_id, b_name, b_email, b_content, b_title, b_pwd, b_date, b_count, b_ip
+<if test="b_fname != null">
+,b_fname, b_fsize
+</if>
+)  VALUES( 
+uploadtemp_bid_seq.nextval, #{b_name}, #{b_email},  #{b_content}, #{b_title}, #{b_pwd}, sysdate, 0, #{b_ip}
+<if test="b_fname != null">
+,#{b_fname}, #{b_fsize}
+</if>    
+)
+</insert>
+</mapper>

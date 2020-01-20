@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd">
+	<!--  대상 클래스 빈 생성 -->
+	<bean id='targetBean' class="aop2_xml.MessageBeanImpl"/>
+	<!-- 어드바이스 (공통로직) 빈 생성 -->
+	<bean id='advice' class="aop2_xml.LoggingAdvice"/>
+	<bean id='advice2' class="aop2_xml.SampleAdvice"/>
+	<!-- Aop 설정 -->
+	<aop:config>
+		<aop:pointcut expression="execution(public * aop2_xml.*.*Hello(..))" id="pointcut"/>
+		<aop:aspect id='aspect' ref='advice' order='2'>
+			<aop:before method="before" pointcut-ref="pointcut"/>
+			<aop:around method="around" pointcut-ref="pointcut"/>
+		</aop:aspect>
+		<aop:aspect id='aspect2' ref='advice2' order='1'>
+			<aop:before method="before" pointcut-ref="pointcut"/>
+			<aop:after method="after" pointcut-ref="pointcut"/>
+		</aop:aspect>
+	</aop:config>	
+</beans>

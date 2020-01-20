@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+<!-- <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/> -->
+<!-- <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/> -->
+<context:annotation-config/>
+<!--  객체 : bean -->
+<bean id='messagebean' class="annotation2.autowired.MessageBeanImpl">
+<property name="name" value="홍길동"></property>
+<property name="message"><value>오늘도 행복 합시다</value></property>
+</bean>
+<bean id='outputer' class="annotation2.autowired.OutputerImpl">
+<property name="path" value="save.txt"></property>
+</bean>
+<bean id='outputer2' class="annotation2.autowired.OutputerImpl">
+<property name="path" value="ddong.txt"></property>
+</bean>
+</beans>
+<!--applicationContext.xml-->

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+</head>
+<body>
+	<form action="member/insert2.do" method="post">
+		<table cellspacing="0" width="600">
+			<caption>
+				<h2> 회원가입 </h2>
+			</caption>
+			<tr>
+				<td width="200">아이디</td>
+				<td><input type="text" name="id" value='babo'></td>
+			<tr>				
+				<td width="200">비밀번호</td>
+				<td><input type="text" name="pass" value='1111'></td>
+			</tr>
+			<tr>	
+				<td width="200">이름</td>
+				<td><input type="text" name="name" value='홍길동'></td>				
+			</tr>
+			<tr>
+				<td width="100">나이</td>			
+				<td><input type="text" name="age" value="20"></td>
+			</tr>
+			<tr>
+				<td width="100">주소</td>			
+				<td><input type="text" name="address.sido" value="경기">
+					<input type="text" name="address.gu" value="성남">
+					<input type="text" name="address.dong" value="판굔">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit" value="전송"></td>
+			</tr>
+
+		</table>
+
+	</form>
+
+
+</body>
+</html>
